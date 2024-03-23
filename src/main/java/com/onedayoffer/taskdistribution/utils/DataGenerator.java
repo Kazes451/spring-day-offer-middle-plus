@@ -6,10 +6,9 @@ import com.onedayoffer.taskdistribution.DTO.TaskStatus;
 import com.onedayoffer.taskdistribution.DTO.TaskType;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
+
+import static com.onedayoffer.taskdistribution.DTO.TaskType.*;
 
 @Component
 public class DataGenerator {
@@ -79,11 +78,11 @@ public class DataGenerator {
 
     private List<EmployeeDTO> employeePack1() {
         return List.of(
-                new EmployeeDTO("Andrey", "hall manager"),
-                new EmployeeDTO("Svetlana", "hall cleaner"),
-                new EmployeeDTO("Mariya", "hall employee"),
-                new EmployeeDTO("Dmitry", "hall employee"),
-                new EmployeeDTO("David", "hall employee"));
+                new EmployeeDTO("Andrey", "hall manager", Set.of(CUSTOMER_ASSISTANCE, CUSTOMER_SERVICE)),
+                new EmployeeDTO("Svetlana", "hall cleaner", Set.of(CUSTOMER_SERVICE)),
+                new EmployeeDTO("Mariya", "hall employee", Set.of(CUSTOMER_ASSISTANCE, INVENTORY, ACCEPTANCE_OF_GOODS)),
+                new EmployeeDTO("Dmitry", "hall employee", Set.of(CUSTOMER_ASSISTANCE, INVENTORY, ACCEPTANCE_OF_GOODS)),
+                new EmployeeDTO("David", "hall employee", Set.of(CUSTOMER_ASSISTANCE, INVENTORY, ACCEPTANCE_OF_GOODS)));
     }
 
     public boolean equalLists(List<String> one, List<String> two) {
